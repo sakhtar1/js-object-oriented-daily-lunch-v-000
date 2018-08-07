@@ -75,13 +75,13 @@ class Meal{
   }
 
   customers(){
-    return this.meals().map(meal => {
-          return meal.customer();
-        });
+  return this.deliveries().map(delivery => {
+    return store.customers.find(customer => 
+    customer.id === delivery.customerId)});
   }
 
   byPrice(){
-    return store.meals.sort((a, b) => 
+    return store.meals.sort((a, b) =>
     a.price < b.price);
   }
 }
@@ -96,17 +96,17 @@ class Delivery{
   }
 
   meal(){
-      return store.meals.find(meal => 
+      return store.meals.find(meal =>
         meal.id === this.mealId);
   }
 
   customer(){
-    return store.customers.find(customer => 
+    return store.customers.find(customer =>
       customer.id === this.customerId);
   }
 
   neighborhood(){
-    return store.neighborhoods.find(neighborhood => 
+    return store.neighborhoods.find(neighborhood =>
       neighborhood.id === this.neighborhoodId);
   }
 }
