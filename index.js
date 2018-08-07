@@ -14,7 +14,9 @@ class Neighborhood{
   }
 
   deliveries(){
-
+    return store.deliveries.filter(delivery => {
+        return delivery.deliveryId = this.id;
+      });
   }
 
   customers(){
@@ -69,11 +71,11 @@ class Meal{
   }
 
   customers(){
-  
+
   }
 
   byPrice(){
-    
+
   }
 }
 
@@ -87,14 +89,14 @@ class Delivery{
   }
 
   meal(){
-    
+
   }
 
   customer(){
-    
+
   }
 
   neighborhood(){
-    
+
   }
 }
