@@ -107,6 +107,6 @@ class Delivery{
 
   neighborhood(){
     return store.neighborhoods.find(neighborhood =>
-      neighborhoodId === this.neighborhoodId);
+      neighborhood.id === this.neighborhoodId);
   }
 }
