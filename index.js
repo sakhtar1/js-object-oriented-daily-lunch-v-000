@@ -28,3 +28,27 @@ class Neighborhood{
   }
 
 }
+
+class Customer{
+  constructor(name){
+    this.id = customerId++;
+    this.name = name;
+    this.neighborhoodId = neighborhood.id;
+  }
+
+  deliveries(){
+    return store.deliveries.filter(delivery => {
+      return delivery.deliveryId = this.id;
+    });
+  }
+
+  meals(){
+    return store.meals.filter(meal => {
+      return meal.mealId = this.id;
+    });
+  }
+
+  totalSpent(){
+    
+  }
+}
