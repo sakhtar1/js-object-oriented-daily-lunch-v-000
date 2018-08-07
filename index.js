@@ -34,6 +34,7 @@ class Customer{
     this.id = customerId++;
     this.name = name;
     this.neighborhoodId = neighborhood.id;
+    store.customers.push(this);
   }
 
   deliveries(){
@@ -49,6 +50,15 @@ class Customer{
   }
 
   totalSpent(){
+
+  }
+}
+
+class Meal{
+  constructor(title, price){
+    this.title = title;
+    this.price = price;
+    this.mealId = meal.id;
     
   }
 }
