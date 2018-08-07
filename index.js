@@ -9,24 +9,24 @@ let mealId = 0;
 class Neighborhood{
   constructor(name){
     this.name = name;
-    this.id = neighborhoodId++;
+    this.id = ++neighborhoodId;
     store.neighborhoods.push(this);
   }
 
   deliveries(){
     return store.deliveries.filter(delivery => {
-        return delivery.deliveryId = this.id;
+        return delivery.neighborhoodId === this.id;
       });
   }
 
   customers(){
     return store.customers.filter(customer => {
-        return customer.customerId = this.id;
+        return customer.neighborhoodId === this.id;
       });
   }
 
   meals(){
-    let orders = this.customers().map(cus => {return cus.meals()});
+    let orders = this.customers().map(customer => {return customer.meals()});
         return [...new Set(orders[0])]
   }
 
@@ -42,13 +42,13 @@ class Customer{
 
   deliveries(){
     return store.deliveries.filter(delivery => {
-      return delivery.deliveryId = this.id;
+      return delivery.customerId === this.id;
     });
   }
 
   meals(){
-    return this.deliveries().map(del => {
-      return store.meals.find(meal => meal.id === del.mealId)
+    return this.deliveries().map(delivery => {
+      return store.meals.find(meal => meal.id === delivery.mealId)
     });
   }
 
@@ -64,13 +64,13 @@ class Meal{
   constructor(title, price){
     this.title = title;
     this.price = price;
-    this.id = mealId++
+    this.id = ++mealId;
     store.meals.push(this);
   }
 
   deliveries(){
     return store.deliveries.filter(delivery => {
-      return delivery.deliveryId = this.id;
+      return delivery.mealId = this.id;
     });
   }
 
@@ -80,7 +80,7 @@ class Meal{
     customer.id === delivery.customerId)});
   }
 
-  static.byPrice(){
+  static byPrice(){
     return store.meals.sort((a, b) =>
     a.price < b.price);
   }
@@ -88,7 +88,7 @@ class Meal{
 
 class Delivery{
   constructor(meal, neighborhood, customer){
-    this.id = deliveryId++;
+    this.id = ++deliveryId;
     this.mealId = meal.id;
     this.neighborhoodId = neighborhood.id;
     this.customerId = customer.id;
