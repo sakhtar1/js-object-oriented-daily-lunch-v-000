@@ -32,27 +32,20 @@ class Neighborhood{
 
 }
 
-class Customer{
-  constructor(name, neighborhood){
-    this.id = customerId++;
+class Customer {
+  constructor(name, neighborhoodId){
     this.name = name;
-    this.neighborhoodId = neighborhood.id;
+    this.neighborhoodId = neighborhoodId;
+    this.id = ++customerId;
     store.customers.push(this);
   }
-
-  deliveries(){
-    return store.deliveries.filter(delivery => {
-      return delivery.customerId === this.id;
-    });
+   deliveries() {
+    return store.deliveries.filter(del => del.customerId === this.id);
   }
-
-  meals(){
-    return this.deliveries().map(delivery => {
-      return store.meals.find(meal => meal.id === delivery.mealId)
-    });
+   meals() {
+    return this.deliveries().map(del => {return store.meals.find(meal => meal.id === del.mealId)});
   }
-
-  totalSpent(){
+   totalSpent() {
     let total = 0;
     let prices = this.meals().map(meal => meal.price);
     const addPrices = (total, nextPrice) => total + nextPrice;
