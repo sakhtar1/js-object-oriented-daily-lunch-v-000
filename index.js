@@ -40,10 +40,13 @@ class Customer {
     store.customers.push(this);
   }
    deliveries() {
-    return store.deliveries.filter(del => del.customerId === this.id);
+    return store.deliveries.filter(delivery => 
+      delivery.customerId === this.id);
   }
    meals() {
-    return this.deliveries().map(del => {return store.meals.find(meal => meal.id === del.mealId)});
+    return this.deliveries().map(delivery => {
+      return store.meals.find(meal => 
+        meal.id === delivery.mealId)});
   }
    totalSpent() {
     let total = 0;
