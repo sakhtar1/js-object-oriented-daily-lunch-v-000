@@ -32,23 +32,27 @@ class Neighborhood{
 
 }
 
-class Customer {
-  constructor(name, neighborhood){
+class Customer{
+  constructor(name, neighborhoodID){
+    this.id = customerId++;
     this.name = name;
-    this.neighborhoodId = neighborhood.id;
-    this.id = ++customerId;
+    this.neighborhoodId = neighborhoodId;
     store.customers.push(this);
   }
-   deliveries() {
-    return store.deliveries.filter(delivery =>
-      delivery.customerId === this.id);
+
+  deliveries(){
+    return store.deliveries.filter(delivery => {
+      return delivery.customerId === this.id;
+    });
   }
-   meals() {
+
+  meals(){
     return this.deliveries().map(delivery => {
-      return store.meals.find(meal =>
-        meal.id === delivery.mealId)});
+      return store.meals.find(meal => meal.id === delivery.mealId)
+    });
   }
-   totalSpent() {
+
+  totalSpent(){
     let total = 0;
     let prices = this.meals().map(meal => meal.price);
     const addPrices = (total, nextPrice) => total + nextPrice;
