@@ -61,4 +61,40 @@ class Meal{
     this.id = mealId++
     store.meals.push(this);
   }
+
+  deliveries(){
+    return store.deliveries.filter(delivery => {
+      return delivery.deliveryId = this.id;
+    });
+  }
+
+  customers(){
+  
+  }
+
+  byPrice(){
+    
+  }
+}
+
+class Delivery{
+  constructor(meal, neighborhood, customer){
+    this.id = deliveryId++;
+    this.mealId = meal.id;
+    this.neighborhoodId = neighborhood.id;
+    this.customerId = customer.id;
+    store.deliveries.push(this);
+  }
+
+  meal(){
+    
+  }
+
+  customer(){
+    
+  }
+
+  neighborhood(){
+    
+  }
 }
