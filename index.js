@@ -33,19 +33,19 @@ class Neighborhood{
 }
 
 class Customer {
-  constructor(name, neighborhoodId){
+  constructor(name, neighborhood){
     this.name = name;
-    this.neighborhoodId = neighborhoodId;
+    this.neighborhoodId = neighborhood.id;
     this.id = ++customerId;
     store.customers.push(this);
   }
    deliveries() {
-    return store.deliveries.filter(delivery => 
+    return store.deliveries.filter(delivery =>
       delivery.customerId === this.id);
   }
    meals() {
     return this.deliveries().map(delivery => {
-      return store.meals.find(meal => 
+      return store.meals.find(meal =>
         meal.id === delivery.mealId)});
   }
    totalSpent() {
