@@ -76,11 +76,11 @@ class Meal{
 
   customers(){
   return this.deliveries().map(delivery => {
-    return store.customers.find(customer => 
+    return store.customers.find(customer =>
     customer.id === delivery.customerId)});
   }
 
-  byPrice(){
+  static.byPrice(){
     return store.meals.sort((a, b) =>
     a.price < b.price);
   }
