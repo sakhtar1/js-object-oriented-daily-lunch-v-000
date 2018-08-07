@@ -14,16 +14,17 @@ class Neighborhood{
   }
 
   deliveries(){
-    
+
   }
 
   customers(){
     return store.customers.filter(customer => {
-        return customer.customerId = this.id
+        return customer.customerId = this.id;
+      )};
   }
 
   meals(){
-    
+
   }
-  
+
 }
