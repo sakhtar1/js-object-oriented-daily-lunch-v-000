@@ -33,7 +33,7 @@ class Neighborhood{
 }
 
 class Customer{
-  constructor(name, neighborhoodID){
+  constructor(name, neighborhoodiD){
     this.id = customerId++;
     this.name = name;
     this.neighborhoodId = neighborhoodId;
